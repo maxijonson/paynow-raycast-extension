@@ -11,7 +11,11 @@ type ZodLocalStorage<T> = LocalStorage<T> & {
   isValid: boolean;
 };
 
-export function useZodLocalStorage<T>(key: string, schema: ZodType<T>, initialValue?: undefined): ZodLocalStorage<T | undefined>;
+export function useZodLocalStorage<T>(
+  key: string,
+  schema: ZodType<T>,
+  initialValue?: undefined,
+): ZodLocalStorage<T | undefined>;
 export function useZodLocalStorage<T>(key: string, schema: ZodType<T>, initialValue: T): ZodLocalStorage<T>;
 export function useZodLocalStorage<T>(key: string, schema: ZodType<T>, initialValue?: T) {
   const localStorage = useLocalStorage<T>(key, initialValue);
