@@ -20,6 +20,12 @@
       "title": "List Products",
       "description": "List your store's products",
       "mode": "view"
+    },
+    {
+      "name": "list-tags",
+      "title": "List Tags",
+      "description": "List your store's tags",
+      "mode": "view"
     }
   ],
   "preferences": [],

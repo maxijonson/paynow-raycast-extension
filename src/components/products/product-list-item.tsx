@@ -6,12 +6,11 @@ import { toPriceString } from "../../utils/to-price-string";
 const ProductListItem = ({
   actions,
   detail,
-  icon,
   quickLook,
   product,
 }: { product: Management.components["schemas"]["ProductDto"] } & Pick<
   List.Item.Props,
-  "actions" | "detail" | "icon" | "quickLook"
+  "actions" | "detail" | "quickLook"
 >) => {
   const keywords = useMemo<string[]>(() => {
     const kw = [product.id, product.slug, ...product.tags.flatMap((tag) => [tag.name, tag.slug])];
@@ -50,9 +49,9 @@ const ProductListItem = ({
       subtitle={subtitle}
       keywords={keywords}
       accessories={[{ text: toPriceString(product) }]}
+      icon={product.image_url || undefined}
       actions={actions}
       detail={detail}
-      icon={icon}
       quickLook={quickLook}
     />
   );

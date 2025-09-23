@@ -60,6 +60,18 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       <Line name="Type" value="Subscription" hidden={!product.allow_subscription} />
       <Line name="Created At" value={new Date(product.created_at || 0).toLocaleString()} hidden={!product.created_at} />
       <Line name="Updated At" value={new Date(product.updated_at || 0).toLocaleString()} hidden={!product.updated_at} />
+      {product.image_url && (
+        <List.Item
+          title="Image"
+          accessories={[{ icon: product.image_url || undefined }]}
+          actions={
+            <ActionPanel>
+              <Action.CopyToClipboard title="Copy Image URL" content={product.image_url || ""} />
+              <Action.OpenInBrowser title="Open Image" url={product.image_url} />
+            </ActionPanel>
+          }
+        />
+      )}
     </List>
   );
 };
