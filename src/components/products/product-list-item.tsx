@@ -1,7 +1,7 @@
 import { List } from "@raycast/api";
 import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
-import { toPriceString } from "../utils/to-price-string";
+import { toPriceString } from "../../utils/to-price-string";
 
 const ProductListItem = ({
   actions,

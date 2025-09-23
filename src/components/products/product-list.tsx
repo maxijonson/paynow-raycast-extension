@@ -1,11 +1,11 @@
 import { Action, ActionPanel, List } from "@raycast/api";
-import { useStore } from "../hooks/use-store";
-import { useListProducts } from "../queries/products/list-products.query";
+import { useStore } from "../../hooks/use-store";
+import { useProductsList } from "../../queries/products/list-products.query";
 import ProductListItem from "./product-list-item";
 import ProductDetails from "./product-details";
 
 const ProductList = () => {
-  const { data: products, isLoading } = useListProducts();
+  const { data: products, isLoading } = useProductsList();
   const [store] = useStore();
 
   return (

@@ -3,8 +3,8 @@ import { useStore } from "../../hooks/use-store";
 import type { Store } from "../../types/store.types";
 import { PaynowAPI } from "../../utils/paynow-api";
 
-export const useListProducts = ({ id }: { id?: string } = {}) => {
-  const [store] = useStore({ id });
+export const useProductsList = ({ storeId }: { storeId?: string } = {}) => {
+  const [store] = useStore({ id: storeId });
 
   return useCachedPromise(
     async (store: Store | null) => {

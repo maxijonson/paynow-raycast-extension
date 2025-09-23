@@ -1,9 +1,9 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import type { Management } from "@ywwa/paylater/dist/generated";
-import { toPriceString } from "../utils/to-price-string";
+import { toPriceString } from "../../utils/to-price-string";
 import { useCallback, useMemo } from "react";
-import { useStore } from "../hooks/use-store";
-import { withProviders } from "../hocs/with-providers";
+import { useStore } from "../../hooks/use-store";
+import { withProviders } from "../../hocs/with-providers";
 
 export interface ProductDetailsProps {
   product: Management.components["schemas"]["ProductDto"];
