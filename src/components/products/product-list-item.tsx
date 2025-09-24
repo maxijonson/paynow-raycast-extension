@@ -33,22 +33,16 @@ const ProductListItem = ({
     product.tags,
   ]);
 
-  const subtitle = useMemo<string>(() => {
-    const parts: string[] = [];
-
-    parts.push(product.tags.map((tag) => tag.name).join(", "));
-
-    return parts.join(" • ");
-  }, [product]);
-
   return (
     <List.Item
       id={product.id}
       key={product.id}
       title={product.name}
-      subtitle={subtitle}
       keywords={keywords}
-      accessories={[{ text: toPriceString(product) }]}
+      accessories={[
+        ...product.tags.map((tag) => ({ tag: tag.name })),
+        { text: toPriceString(product) },
+      ]}
       icon={product.image_url || undefined}
       actions={actions}
       detail={detail}

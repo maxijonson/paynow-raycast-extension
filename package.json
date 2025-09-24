@@ -10,7 +10,7 @@
   "commands": [
     {
       "name": "list-stores",
-      "title": "List Stores",
+      "title": "Manage Stores",
       "subtitle": "Shows configured stores",
       "description": "List all you PayNow stores",
       "mode": "view"
@@ -25,6 +25,12 @@
       "name": "list-tags",
       "title": "List Tags",
       "description": "List your store's tags",
+      "mode": "view"
+    },
+    {
+      "name": "list-orders",
+      "title": "List Orders",
+      "description": "List your store's orders",
       "mode": "view"
     }
   ],

@@ -17,6 +17,7 @@ const ProductList = () => {
           actions={
             <ActionPanel title={product.name}>
               <Action.Push title="View Details" target={<ProductDetails product={product} />} />
+              <Action.CopyToClipboard title="Copy Product ID" content={product.id} />
               <Action.OpenInBrowser
                 title="Open"
                 url={`https://dashboard.paynow.gg/products/${product.id}?s=${store?.slug}`}
