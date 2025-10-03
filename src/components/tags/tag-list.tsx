@@ -18,10 +18,7 @@ const TagList = () => {
             <ActionPanel title={tag.name}>
               <Action.Push title="View Details" target={<TagDetails tag={tag} />} />
               <Action.CopyToClipboard title="Copy Tag ID" content={tag.id} />
-              <Action.OpenInBrowser
-                title="Open"
-                url={`https://dashboard.paynow.gg/tags/${tag.id}?s=${store?.slug}`}
-              />
+              <Action.OpenInBrowser title="Open" url={`https://dashboard.paynow.gg/tags/${tag.id}?s=${store?.slug}`} />
             </ActionPanel>
           }
         />

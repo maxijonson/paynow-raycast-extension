@@ -7,21 +7,14 @@ const TagListItem = ({
   detail,
   quickLook,
   tag,
-}: { tag: Management.components["schemas"]["TagDto"] } & Pick<
-  List.Item.Props,
-  "actions" | "detail" | "quickLook"
->) => {
+}: { tag: Management.components["schemas"]["TagDto"] } & Pick<List.Item.Props, "actions" | "detail" | "quickLook">) => {
   const keywords = useMemo<string[]>(() => {
     const kw = [tag.id, tag.slug];
     if (tag.name) {
       kw.push(tag.name);
     }
     return kw;
-  }, [
-    tag.id,
-    tag.slug,
-    tag.name,
-  ]);
+  }, [tag.id, tag.slug, tag.name]);
 
   return (
     <List.Item

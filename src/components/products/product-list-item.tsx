@@ -39,10 +39,7 @@ const ProductListItem = ({
       key={product.id}
       title={product.name}
       keywords={keywords}
-      accessories={[
-        ...product.tags.map((tag) => ({ tag: tag.name })),
-        { text: toPriceString(product) },
-      ]}
+      accessories={[...product.tags.map((tag) => ({ tag: tag.name })), { text: toPriceString(product) }]}
       icon={product.image_url || undefined}
       actions={actions}
       detail={detail}
