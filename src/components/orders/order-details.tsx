@@ -39,6 +39,7 @@ const OrderDetails = ({ order }: OrderDetailsProps) => {
       <Line name="ID" value={order.id} />
       <Line name="Pretty ID" value={order.pretty_id} />
       <Line name="Created At" value={new Date(order.created_at || 0).toLocaleString()} hidden={!order.created_at} />
+      <Line name="Status" value={order.status} />
     </List>
   );
 };

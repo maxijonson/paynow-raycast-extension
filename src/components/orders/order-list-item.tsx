@@ -1,4 +1,4 @@
-import { List } from "@raycast/api";
+import { Color, List } from "@raycast/api";
 import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 
@@ -58,8 +58,30 @@ const OrderListItem = ({
       subtitle={order.pretty_id}
       icon={order.customer.profile?.avatar_url || undefined}
       accessories={[
+        {
+          tag: (() => {
+            if (order.status === "canceled") return { value: "Canceled", color: Color.Red };
+            if (order.status === "refunded") return { value: "Refunded", color: Color.Red };
+            if (order.status === "chargeback") return { value: "Chargeback", color: Color.Red };
+            if (order.last_payment_error) return { value: order.last_payment_error.decline_code, color: Color.Red };
+            return undefined;
+          })(),
+          tooltip: (() => {
+            if (order.last_payment_error) return order.last_payment_error.message;
+            return undefined;
+          })(),
+        },
         { date: order.created_at ? new Date(order.created_at) : undefined },
-        { text: order.total_amount_str },
+        {
+          text: {
+            value: order.total_amount_str,
+            color: (() => {
+              if (["canceled", "refunded", "chargeback"].includes(order.status)) return Color.Red;
+              if (order.last_payment_error) return Color.Red;
+              return undefined;
+            })(),
+          },
+        },
       ]}
       keywords={keywords}
       actions={actions}
