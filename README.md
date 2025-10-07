@@ -25,7 +25,9 @@ Unofficial Raycast extension for [PayNow](https://www.paynow.gg) - a Merchant of
    - View Webhook Events
      - View event details - easily copy their payload
 
-**Planned (no particular order):**
+### Planned Features
+
+*No particular order*
 
 - Coupons
   - List Coupons
@@ -39,6 +41,10 @@ Unofficial Raycast extension for [PayNow](https://www.paynow.gg) - a Merchant of
 - Gift Cards
   - List Gift Cards
   - View Gift Card Details
+
+### Feature Requests
+
+Got a feature request? Please open an issue or contact me on Discord: **MaxiJonson**. Please take note that I usually only work on this project occasionally (literally only on the 1h30 train ride to and from work lol), so please be patient.
 
 ## Installation
 
