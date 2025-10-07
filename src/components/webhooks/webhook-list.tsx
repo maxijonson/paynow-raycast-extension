@@ -18,7 +18,10 @@ const WebhookList = () => {
             <ActionPanel title={webhook.url}>
               <Action.Push title="View Events" target={<WebhookEventList webhook={webhook} />} />
               <Action.CopyToClipboard title="Copy Webhook ID" content={webhook.id} />
-              <Action.OpenInBrowser title="Open" url={`https://dashboard.paynow.gg/webhooks/${webhook.id}?s=${store?.slug}`} />
+              <Action.OpenInBrowser
+                title="Open"
+                url={`https://dashboard.paynow.gg/webhooks/${webhook.id}?s=${store?.slug}`}
+              />
             </ActionPanel>
           }
         />

@@ -48,23 +48,20 @@ const WebhookEventDetails = ({ event }: WebhookEventDetailsProps) => {
               <Detail.Metadata.Label title="Execution ID" text={exec.id} />
               <Detail.Metadata.Label title="Started At" text={new Date(exec.started_at).toLocaleString()} />
               {exec.finished_at && (
-                <Detail.Metadata.Label
-                  title="Finished At"
-                  text={new Date(exec.finished_at).toLocaleString()}
-                />
+                <Detail.Metadata.Label title="Finished At" text={new Date(exec.finished_at).toLocaleString()} />
               )}
               <Detail.Metadata.TagList title="Status">
                 <Detail.Metadata.TagList.Item
                   text={exec.status_code.toString()}
                   color={(() => {
                     if (exec.status_code > 400) {
-                        return Color.Red;
+                      return Color.Red;
                     }
                     if (exec.status_code > 300) {
-                        return Color.Yellow;
+                      return Color.Yellow;
                     }
                     if (exec.status_code > 200) {
-                        return Color.Green;
+                      return Color.Green;
                     }
                   })()}
                 />
