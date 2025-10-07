@@ -13,6 +13,10 @@ Unofficial Raycast extension for [PayNow](https://www.paynow.gg) - a Merchant of
 - Orders
   - List Orders
   - View Order Details
+- Webhooks
+   - List Webhooks
+   - View Webhook Events
+     - View event details - easily copy their payload
 
 ## Installation
 
