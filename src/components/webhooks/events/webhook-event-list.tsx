@@ -4,6 +4,7 @@ import { useStore } from "../../../hooks/use-store";
 import { useWebhookEventsList } from "../../../queries/webhooks/list-webhook-events.query";
 import WebhookEventListItem from "./webhook-event-list-item";
 import { withProviders } from "../../../hocs/with-providers";
+import WebhookEventDetails from "./webhook-event-details";
 
 export interface WebhookEventListProps {
   webhook: string | components["schemas"]["WebhookSubscriptionDto"];
@@ -27,6 +28,7 @@ const WebhookEventList = ({ webhook }: WebhookEventListProps) => {
           event={event}
           actions={
             <ActionPanel title={event.id}>
+              <Action.Push title="View Event Details" target={<WebhookEventDetails event={event} />} />
               <Action.CopyToClipboard title="Copy Event ID" content={event.id} />
               <Action.CopyToClipboard title="Copy Event Payload" content={JSON.stringify(event.payload)} />
             </ActionPanel>
