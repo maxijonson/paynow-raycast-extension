@@ -32,6 +32,12 @@
       "title": "List Orders",
       "description": "List your store's orders",
       "mode": "view"
+    },
+    {
+      "name": "list-webhooks",
+      "title": "List Webhooks",
+      "description": "List your store's webhooks",
+      "mode": "view"
     }
   ],
   "preferences": [],

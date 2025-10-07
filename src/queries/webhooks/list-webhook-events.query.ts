@@ -4,38 +4,31 @@ import type { Store } from "../../types/store.types";
 import { PaynowAPI } from "../../utils/paynow-api";
 import { showPaynowError } from "../../utils/show-paynow-error";
 
-export const useOrdersList = ({ storeId }: { storeId?: string } = {}) => {
+export const useWebhookEventsList = (webhookId: string, { storeId }: { storeId?: string } = {}) => {
   const [store] = useStore({ id: storeId });
 
   return useCachedPromise(
-    (store: Store | null) => async (options) => {
+    async (store: Store | null) => {
       if (!store) {
-        return { data: [], hasMore: false, cursor: undefined };
+        return null;
       }
       const api = new PaynowAPI({ apiKey: store.apiKey });
 
       try {
-        const response = await api.management.order.getOrders({
+        const response = await api.management.webhook.getHistory({
           params: {
             path: {
               storeId: store.id,
-            },
-            query: {
-              limit: 100,
-              ...(options.lastItem ? { cursor: options.lastItem.id } : {}),
+              webhookId,
             },
           },
         });
-        const hasMore = response.length === 100;
-        return { data: response.slice(0, 99), hasMore, cursor: hasMore ? response[99].id : undefined };
+        return response;
       } catch (error) {
         await showPaynowError(error);
-        return { data: [], hasMore: false, cursor: undefined };
+        return null;
       }
     },
     [store],
-    {
-      keepPreviousData: true,
-    },
   );
 };

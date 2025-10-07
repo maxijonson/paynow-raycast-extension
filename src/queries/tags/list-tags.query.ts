@@ -1,7 +1,8 @@
-import { useCachedPromise, showFailureToast } from "@raycast/utils";
+import { useCachedPromise } from "@raycast/utils";
 import { useStore } from "../../hooks/use-store";
 import type { Store } from "../../types/store.types";
 import { PaynowAPI } from "../../utils/paynow-api";
+import { showPaynowError } from "../../utils/show-paynow-error";
 
 export const useTagsList = ({ storeId }: { storeId?: string } = {}) => {
   const [store] = useStore({ id: storeId });
@@ -23,7 +24,7 @@ export const useTagsList = ({ storeId }: { storeId?: string } = {}) => {
         });
         return response;
       } catch (error) {
-        await showFailureToast({ title: "Failed to fetch tags", error });
+        await showPaynowError(error);
         return [];
       }
     },
