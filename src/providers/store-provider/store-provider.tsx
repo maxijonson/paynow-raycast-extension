@@ -7,6 +7,7 @@ import { useStores } from "../stores-provider/stores-provider";
 export interface StoreContextValue {
   store: Store | null;
   setStore: (storeId: string) => Promise<void>;
+  isLoading: boolean;
 }
 
 const StoreContext = React.createContext<StoreContextValue | null>(null);
@@ -21,10 +22,9 @@ export const useStore = () => {
 
 export interface StoreProviderProps {
   children?: React.ReactNode;
-  fallback?: React.ReactNode;
 }
 
-const StoreProvider = ({ children, fallback = null }: StoreProviderProps) => {
+const StoreProvider = ({ children }: StoreProviderProps) => {
   const { stores } = useStores();
   const { isLoading, value, setValue } = useZodLocalStorage("store-id", z.string().min(1).nullable(), null);
 
@@ -48,15 +48,12 @@ const StoreProvider = ({ children, fallback = null }: StoreProviderProps) => {
 
   const providerValue = useMemo<StoreContextValue>(
     () => ({
+      isLoading,
       setStore,
       store,
     }),
-    [setStore, store],
+    [isLoading, setStore, store],
   );
-
-  if (isLoading) {
-    return fallback;
-  }
 
   return <StoreContext.Provider value={providerValue}>{children}</StoreContext.Provider>;
 };

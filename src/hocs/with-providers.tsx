@@ -6,14 +6,11 @@ export interface WithProvidersConfig<TProps extends object> {
   Fallback?: ComponentType<TProps>;
 }
 
-export const withProviders = <TProps extends object>(
-  Component: ComponentType<TProps>,
-  { Fallback = () => null }: WithProvidersConfig<TProps> = {},
-): ComponentType<TProps> => {
+export const withProviders = <TProps extends object>(Component: ComponentType<TProps>): ComponentType<TProps> => {
   const WithProviders = (props: TProps) => {
     return (
-      <StoresProvider fallback={<Fallback {...props} />}>
-        <StoreProvider fallback={<Fallback {...props} />}>
+      <StoresProvider>
+        <StoreProvider>
           <Component {...props} />
         </StoreProvider>
       </StoresProvider>

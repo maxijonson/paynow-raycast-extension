@@ -5,7 +5,11 @@ import { zodFieldResolver, zodResolver } from "../utils/zod-resolver";
 import { useStores } from "../providers/stores-provider/stores-provider";
 import { withProviders } from "../hocs/with-providers";
 
-const StoreEditor = ({ id }: { id?: string }) => {
+export interface StoreEditorProps {
+  id?: string;
+}
+
+const StoreEditor = ({ id }: StoreEditorProps) => {
   const { pop } = useNavigation();
   const { stores, addStore } = useStores();
   const existingStore = id ? stores.find((store) => store.id === id) : undefined;
@@ -66,4 +70,10 @@ const StoreEditor = ({ id }: { id?: string }) => {
   );
 };
 
-export default withProviders(StoreEditor);
+export default withProviders((props: StoreEditorProps) => {
+  const { isLoading } = useStores();
+  if (isLoading) {
+    return <Form isLoading />;
+  }
+  return <StoreEditor {...props} />;
+});

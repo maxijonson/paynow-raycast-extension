@@ -3,6 +3,7 @@ import { useZodLocalStorage } from "../../hooks/use-zod-local-storage";
 import { Store } from "../../types/store.types";
 
 export interface StoresContextValue {
+  isLoading: boolean;
   stores: Store[];
   areStoresValid: boolean;
   removeStore: (id: string) => Promise<void>;
@@ -23,10 +24,9 @@ export const useStores = () => {
 
 export interface StoresProviderProps {
   children?: React.ReactNode;
-  fallback?: React.ReactNode;
 }
 
-const StoresProvider = ({ children, fallback = null }: StoresProviderProps) => {
+const StoresProvider = ({ children }: StoresProviderProps) => {
   const {
     isLoading,
     value: stores,
@@ -52,6 +52,7 @@ const StoresProvider = ({ children, fallback = null }: StoresProviderProps) => {
 
   const providerValue = useMemo<StoresContextValue>(
     () => ({
+      isLoading,
       addStore,
       areStoresValid,
       removeStore,
@@ -59,12 +60,8 @@ const StoresProvider = ({ children, fallback = null }: StoresProviderProps) => {
       setStores,
       stores,
     }),
-    [addStore, areStoresValid, removeStore, removeStores, setStores, stores],
+    [addStore, areStoresValid, isLoading, removeStore, removeStores, setStores, stores],
   );
-
-  if (isLoading) {
-    return fallback;
-  }
 
   return <StoresContext.Provider value={providerValue}>{children}</StoresContext.Provider>;
 };

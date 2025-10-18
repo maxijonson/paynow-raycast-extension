@@ -5,11 +5,12 @@ import { useStore } from "./providers/store-provider/store-provider";
 import { useStores } from "./providers/stores-provider/stores-provider";
 
 const ListStoresCommand = () => {
-  const { stores, removeStore } = useStores();
-  const { store: currentStore, setStore } = useStore();
+  const { stores, removeStore, isLoading: isLoadingStores } = useStores();
+  const { store: currentStore, setStore, isLoading: isLoadingCurrentStore } = useStore();
 
   return (
     <List
+      isLoading={isLoadingStores || isLoadingCurrentStore}
       actions={
         <ActionPanel title="Manage Stores">
           <Action.Push title="Add Store" target={<StoreEditor />} />
@@ -37,6 +38,10 @@ const ListStoresCommand = () => {
                 target={<StoreEditor id={store.id} />}
               />
               <Action.Push title="Add Store" target={<StoreEditor />} />
+              <Action.CopyToClipboard
+                title="Copy Store ID"
+                content={store.id}
+              />
               <Action
                 title="Remove Store"
                 style={Action.Style.Destructive}
@@ -57,4 +62,4 @@ const ListStoresCommand = () => {
   );
 };
 
-export default withProviders(ListStoresCommand, { Fallback: () => <List isLoading /> });
+export default withProviders(ListStoresCommand);

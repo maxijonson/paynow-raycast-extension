@@ -80,4 +80,4 @@ const WebhookEventDetails = ({ event }: WebhookEventDetailsProps) => {
   );
 };
 
-export default withProviders(WebhookEventDetails, { Fallback: () => <Detail isLoading /> });
+export default withProviders(WebhookEventDetails);

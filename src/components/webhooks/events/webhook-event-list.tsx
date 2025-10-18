@@ -39,4 +39,4 @@ const WebhookEventList = ({ webhook }: WebhookEventListProps) => {
   );
 };
 
-export default withProviders(WebhookEventList, { Fallback: () => <List isLoading /> }) as typeof WebhookEventList;
+export default withProviders(WebhookEventList);
