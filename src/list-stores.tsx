@@ -1,12 +1,12 @@
 import { Action, ActionPanel, Keyboard, List, showToast, Toast } from "@raycast/api";
 import StoreEditor from "./components/store-editor";
 import { withProviders } from "./hocs/with-providers";
-import { useStore } from "./hooks/use-store";
+import { useStore } from "./providers/store-provider/store-provider";
 import { useStores } from "./providers/stores-provider/stores-provider";
 
 const ListStoresCommand = () => {
   const { stores, removeStore } = useStores();
-  const [currentStore, setCurrentStore] = useStore();
+  const { store: currentStore, setStore } = useStore();
 
   return (
     <List
@@ -28,7 +28,7 @@ const ListStoresCommand = () => {
                 <Action
                   title="Set as Current Store"
                   shortcut={Keyboard.Shortcut.Common.Open}
-                  onAction={() => setCurrentStore(store.id)}
+                  onAction={() => setStore(store.id)}
                 />
               )}
               <Action.Push

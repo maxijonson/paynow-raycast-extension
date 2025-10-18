@@ -1,11 +1,11 @@
 import { useCachedPromise } from "@raycast/utils";
-import { useStore } from "../../hooks/use-store";
+import { useStore } from "../../providers/store-provider/store-provider";
 import type { Store } from "../../types/store.types";
 import { PaynowAPI } from "../../utils/paynow-api";
 import { showPaynowError } from "../../utils/show-paynow-error";
 
-export const useWebhookEventsList = (webhookId: string, { storeId }: { storeId?: string } = {}) => {
-  const [store] = useStore({ id: storeId });
+export const useWebhookEventsList = (webhookId: string) => {
+  const { store } = useStore();
 
   return useCachedPromise(
     async (store: Store | null) => {

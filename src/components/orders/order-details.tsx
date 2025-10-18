@@ -1,7 +1,7 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import type { Management } from "@ywwa/paylater/dist/generated";
 import { withProviders } from "../../hocs/with-providers";
-import { useStore } from "../../hooks/use-store";
+import { useStore } from "../../providers/store-provider/store-provider";
 
 export interface OrderDetailsProps {
   order: Management.components["schemas"]["OrderDto"];
@@ -18,7 +18,7 @@ const Line = ({
   hidden?: boolean;
   orderId: string;
 }) => {
-  const [store] = useStore();
+  const { store } = useStore();
 
   if (hidden) return null;
   return (

@@ -1,4 +1,5 @@
 import { type ComponentType } from "react";
+import StoreProvider from "../providers/store-provider/store-provider";
 import StoresProvider from "../providers/stores-provider/stores-provider";
 
 export interface WithProvidersConfig<TProps extends object> {
@@ -12,7 +13,9 @@ export const withProviders = <TProps extends object>(
   const WithProviders = (props: TProps) => {
     return (
       <StoresProvider fallback={<Fallback {...props} />}>
-        <Component {...props} />
+        <StoreProvider fallback={<Fallback {...props} />}>
+          <Component {...props} />
+        </StoreProvider>
       </StoresProvider>
     );
   };

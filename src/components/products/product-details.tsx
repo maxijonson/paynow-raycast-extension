@@ -2,7 +2,7 @@ import { Action, ActionPanel, List } from "@raycast/api";
 import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 import { withProviders } from "../../hocs/with-providers";
-import { useStore } from "../../hooks/use-store";
+import { useStore } from "../../providers/store-provider/store-provider";
 import { toPriceString } from "../../utils/to-price-string";
 
 export interface ProductDetailsProps {
@@ -20,7 +20,7 @@ const Line = ({
   hidden?: boolean;
   productId: string;
 }) => {
-  const [store] = useStore();
+  const { store } = useStore();
 
   if (hidden) return null;
   return (

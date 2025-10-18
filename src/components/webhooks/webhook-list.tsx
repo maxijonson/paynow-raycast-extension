@@ -1,15 +1,16 @@
-import { Action, ActionPanel, List } from "@raycast/api";
-import { useStore } from "../../hooks/use-store";
+import { Action, ActionPanel } from "@raycast/api";
+import { useStore } from "../../providers/store-provider/store-provider";
 import { useWebhooksList } from "../../queries/webhooks/list-webhooks.query";
-import WebhookListItem from "./webhook-list-item";
+import ListContainer from "../list-container";
 import WebhookEventList from "./events/webhook-event-list";
+import WebhookListItem from "./webhook-list-item";
 
 const WebhookList = () => {
   const { data: webhooks, isLoading } = useWebhooksList();
-  const [store] = useStore();
+  const { store } = useStore();
 
   return (
-    <List isLoading={isLoading} navigationTitle={`Webhooks • ${store?.name || "No Store Selected"}`}>
+    <ListContainer isLoading={isLoading} navigationTitle={`Webhooks • ${store?.name || "No Store Selected"}`}>
       {webhooks?.map((webhook) => (
         <WebhookListItem
           key={webhook.id}
@@ -26,7 +27,7 @@ const WebhookList = () => {
           }
         />
       ))}
-    </List>
+    </ListContainer>
   );
 };
 

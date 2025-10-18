@@ -1,15 +1,16 @@
-import { Action, ActionPanel, List } from "@raycast/api";
-import { useStore } from "../../hooks/use-store";
+import { Action, ActionPanel } from "@raycast/api";
+import { useStore } from "../../providers/store-provider/store-provider";
 import { useProductsList } from "../../queries/products/list-products.query";
-import ProductListItem from "./product-list-item";
+import ListContainer from "../list-container";
 import ProductDetails from "./product-details";
+import ProductListItem from "./product-list-item";
 
 const ProductList = () => {
   const { data: products, isLoading } = useProductsList();
-  const [store] = useStore();
+  const { store } = useStore();
 
   return (
-    <List isLoading={isLoading} navigationTitle={`Products • ${store?.name || "No Store Selected"}`}>
+    <ListContainer isLoading={isLoading} navigationTitle={`Products • ${store?.name || "No Store Selected"}`}>
       {products?.map((product) => (
         <ProductListItem
           key={product.id}
@@ -26,7 +27,7 @@ const ProductList = () => {
           }
         />
       ))}
-    </List>
+    </ListContainer>
   );
 };
 

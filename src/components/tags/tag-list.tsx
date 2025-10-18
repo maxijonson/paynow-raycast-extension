@@ -1,15 +1,16 @@
-import { Action, ActionPanel, List } from "@raycast/api";
-import { useStore } from "../../hooks/use-store";
+import { Action, ActionPanel } from "@raycast/api";
+import { useStore } from "../../providers/store-provider/store-provider";
 import { useTagsList } from "../../queries/tags/list-tags.query";
-import TagListItem from "./tag-list-item";
+import ListContainer from "../list-container";
 import TagDetails from "./tag-details";
+import TagListItem from "./tag-list-item";
 
 const TagList = () => {
   const { data: tags, isLoading } = useTagsList();
-  const [store] = useStore();
+  const { store } = useStore();
 
   return (
-    <List isLoading={isLoading} navigationTitle={`Tags • ${store?.name || "No Store Selected"}`}>
+    <ListContainer isLoading={isLoading} navigationTitle={`Tags • ${store?.name || "No Store Selected"}`}>
       {tags?.map((tag) => (
         <TagListItem
           key={tag.id}
@@ -23,7 +24,7 @@ const TagList = () => {
           }
         />
       ))}
-    </List>
+    </ListContainer>
   );
 };
 

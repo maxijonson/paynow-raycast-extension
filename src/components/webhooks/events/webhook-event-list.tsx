@@ -1,6 +1,6 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import type { components } from "@ywwa/paylater/dist/generated/management";
-import { useStore } from "../../../hooks/use-store";
+import { useStore } from "../../../providers/store-provider/store-provider";
 import { useWebhookEventsList } from "../../../queries/webhooks/list-webhook-events.query";
 import WebhookEventListItem from "./webhook-event-list-item";
 import { withProviders } from "../../../hocs/with-providers";
@@ -15,7 +15,7 @@ const WebhookEventList = ({ webhook }: WebhookEventListProps) => {
   const webhookName = typeof webhook === "string" ? webhook : webhook.url;
 
   const { data: webhookEvents, isLoading } = useWebhookEventsList(webhookId);
-  const [store] = useStore();
+  const { store } = useStore();
 
   return (
     <List
