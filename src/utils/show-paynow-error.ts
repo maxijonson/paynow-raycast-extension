@@ -3,7 +3,6 @@ import { isPayNowError } from "@paynow-gg/typescript-sdk";
 import z, { ZodError } from "zod";
 
 export const showPaynowError = async (error: unknown) => {
-  console.error("[showPaynowError]", error);
   if (isPayNowError(error)) {
     return await showFailureToast(error.message, {
       title: `PayNow Error ${error.status}`,
