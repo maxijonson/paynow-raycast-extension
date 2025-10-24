@@ -1,12 +1,12 @@
 import { Action, ActionPanel, List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 import { withProviders } from "../../hocs/with-providers";
 import { useStore } from "../../providers/store-provider/store-provider";
 import { toPriceString } from "../../utils/to-price-string";
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 
 export interface ProductDetailsProps {
-  product: Management.components["schemas"]["ProductDto"];
+  product: ManagementSchemas["ProductDto"];
 }
 
 const Line = ({

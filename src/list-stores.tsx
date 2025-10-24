@@ -38,10 +38,7 @@ const ListStoresCommand = () => {
                 target={<StoreEditor id={store.id} />}
               />
               <Action.Push title="Add Store" target={<StoreEditor />} />
-              <Action.CopyToClipboard
-                title="Copy Store ID"
-                content={store.id}
-              />
+              <Action.CopyToClipboard title="Copy Store ID" content={store.id} />
               <Action
                 title="Remove Store"
                 style={Action.Style.Destructive}

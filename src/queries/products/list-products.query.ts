@@ -1,32 +1,9 @@
-import { useCachedPromise } from "@raycast/utils";
-import { useStore } from "../../providers/store-provider/store-provider";
-import type { Store } from "../../types/store.types";
-import { PaynowAPI } from "../../utils/paynow-api";
-import { showPaynowError } from "../../utils/show-paynow-error";
+import { createPaynowQuery } from "../create-paynow-query";
 
-export const useProductsList = () => {
-  const { store } = useStore();
-
-  return useCachedPromise(
-    async (store: Store | null) => {
-      if (!store) {
-        return [];
-      }
-      const api = new PaynowAPI({ apiKey: store.apiKey });
-      try {
-        const response = await api.management.product.getProducts({
-          params: {
-            path: {
-              storeId: store.id,
-            },
-          },
-        });
-        return response;
-      } catch (error) {
-        await showPaynowError(error);
-        return [];
-      }
-    },
-    [store],
-  );
-};
+export const useProductsList = createPaynowQuery({
+  queryKey: "productsList",
+  queryFn: async (api) => {
+    const { data } = await api.management.products.getProducts();
+    return data;
+  },
+});

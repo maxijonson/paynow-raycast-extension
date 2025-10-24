@@ -1,10 +1,10 @@
-import type { Management } from "@ywwa/paylater/dist/generated";
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 
 type ToPriceStringObjectParam = Pick<
-  Management.components["schemas"]["ProductDto"],
+  ManagementSchemas["ProductDto"],
   "price" | "subscription_interval_scale" | "subscription_interval_value"
 > &
-  Partial<Pick<Management.components["schemas"]["ProductDto"], "allow_subscription" | "allow_one_time_purchase">>;
+  Partial<Pick<ManagementSchemas["ProductDto"], "allow_subscription" | "allow_one_time_purchase">>;
 
 export function toPriceString(priceObj: ToPriceStringObjectParam): string;
 export function toPriceString(price: number): string;

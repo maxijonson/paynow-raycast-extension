@@ -1,16 +1,17 @@
 import { showFailureToast } from "@raycast/utils";
-import { isPaynowError } from "./is-paynow-error";
+import { isPayNowError } from "@paynow-gg/typescript-sdk";
 import z, { ZodError } from "zod";
 
 export const showPaynowError = async (error: unknown) => {
-  if (isPaynowError(error)) {
-    return showFailureToast(error, {
+  console.error("[showPaynowError]", error);
+  if (isPayNowError(error)) {
+    return await showFailureToast(error.message, {
       title: `PayNow Error ${error.status}`,
       message: error.message,
     });
   }
   if (error instanceof ZodError) {
-    return showFailureToast("Validation Error", {
+    return await showFailureToast("Validation Error", {
       title: "Validation Error",
       message: z.prettifyError(error),
     });
@@ -18,10 +19,10 @@ export const showPaynowError = async (error: unknown) => {
 
   console.error(error);
   if (error instanceof Error) {
-    return showFailureToast(error, {
+    return await showFailureToast(error, {
       title: "Error",
       message: error.message,
     });
   }
-  return showFailureToast("An unknown error occurred");
+  return await showFailureToast("An unknown error occurred");
 };

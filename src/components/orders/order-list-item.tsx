@@ -1,5 +1,5 @@
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 import { Color, List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 
 const OrderListItem = ({
@@ -7,10 +7,7 @@ const OrderListItem = ({
   detail,
   quickLook,
   order,
-}: { order: Management.components["schemas"]["OrderDto"] } & Pick<
-  List.Item.Props,
-  "actions" | "detail" | "quickLook"
->) => {
+}: { order: ManagementSchemas["OrderDto"] } & Pick<List.Item.Props, "actions" | "detail" | "quickLook">) => {
   const keywords = useMemo<string[]>(() => {
     const kw = [
       order.id,

@@ -1,17 +1,14 @@
 import { List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 import { toPriceString } from "../../utils/to-price-string";
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 
 const ProductListItem = ({
   actions,
   detail,
   quickLook,
   product,
-}: { product: Management.components["schemas"]["ProductDto"] } & Pick<
-  List.Item.Props,
-  "actions" | "detail" | "quickLook"
->) => {
+}: { product: ManagementSchemas["ProductDto"] } & Pick<List.Item.Props, "actions" | "detail" | "quickLook">) => {
   const keywords = useMemo<string[]>(() => {
     const kw = [product.id, product.slug, ...product.tags.flatMap((tag) => [tag.name, tag.slug])];
     if (product.label) {

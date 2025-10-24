@@ -1,5 +1,5 @@
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 import { Icon, List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 
 const WebhookListItem = ({
@@ -7,7 +7,7 @@ const WebhookListItem = ({
   detail,
   quickLook,
   webhook,
-}: { webhook: Management.components["schemas"]["WebhookSubscriptionDto"] } & Pick<
+}: { webhook: ManagementSchemas["WebhookSubscriptionDto"] } & Pick<
   List.Item.Props,
   "actions" | "detail" | "quickLook"
 >) => {

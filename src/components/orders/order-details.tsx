@@ -1,10 +1,10 @@
 import { Action, ActionPanel, List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { withProviders } from "../../hocs/with-providers";
 import { useStore } from "../../providers/store-provider/store-provider";
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 
 export interface OrderDetailsProps {
-  order: Management.components["schemas"]["OrderDto"];
+  order: ManagementSchemas["OrderDto"];
 }
 
 const Line = ({

@@ -1,5 +1,5 @@
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 import { Color, List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 
 const WebhookEventListItem = ({
@@ -7,10 +7,7 @@ const WebhookEventListItem = ({
   detail,
   quickLook,
   event,
-}: { event: Management.components["schemas"]["QueuedWebhookDto"] } & Pick<
-  List.Item.Props,
-  "actions" | "detail" | "quickLook"
->) => {
+}: { event: ManagementSchemas["QueuedWebhookDto"] } & Pick<List.Item.Props, "actions" | "detail" | "quickLook">) => {
   const keywords = useMemo<string[]>(() => {
     const kw = [event.id];
     return kw;

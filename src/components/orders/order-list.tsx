@@ -8,7 +8,7 @@ import OrderListItem from "./order-list-item";
 const OrderList = () => {
   const { data: orders, isLoading } = useOrdersList();
   const { store } = useStore();
-  
+
   return (
     <ListContainer isLoading={isLoading} navigationTitle={`Orders • ${store?.name || "No Store Selected"}`}>
       {orders?.map((order) => (

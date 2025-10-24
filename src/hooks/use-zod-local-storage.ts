@@ -26,18 +26,21 @@ export function useZodLocalStorage<T>(key: string, schema: ZodType<T>, initialVa
     return schema.safeParse(localStorage.value);
   }, [initialValue, localStorage.isLoading, localStorage.value, schema]);
 
-  const setValue = useCallback(async (newValue: T) => {
-    if (localStorage.isLoading) {
-      return;
-    }
-    const parsed = schema.safeParse(newValue);
-    if (parsed.success) {
-      return await localStorage.setValue(parsed.data);
-    } else {
-      console.warn("Attempted to set invalid value in useZodLocalStorage:", parsed.error);
-    }
-  }, [localStorage, schema]);
-  
+  const setValue = useCallback(
+    async (newValue: T) => {
+      if (localStorage.isLoading) {
+        return;
+      }
+      const parsed = schema.safeParse(newValue);
+      if (parsed.success) {
+        return await localStorage.setValue(parsed.data);
+      } else {
+        console.warn("Attempted to set invalid value in useZodLocalStorage:", parsed.error);
+      }
+    },
+    [localStorage, schema],
+  );
+
   return {
     ...localStorage,
     setValue,

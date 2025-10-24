@@ -1,12 +1,11 @@
-import { ManagementAPI, StorefrontAPI } from "@ywwa/paylater";
+import { createManagementClient, createStorefrontClient } from "@paynow-gg/typescript-sdk";
 
-export class PaynowAPI {
-  public management = new ManagementAPI();
-  public products = new StorefrontAPI();
+export class Paynow {
+  public management: ReturnType<typeof createManagementClient>;
+  public storefront: ReturnType<typeof createStorefrontClient>;
 
-  constructor({ apiKey }: { apiKey?: string }) {
-    if (apiKey) {
-      this.management.setToken(apiKey);
-    }
+  constructor({ storeId, apiKey }: { storeId: string; apiKey: string }) {
+    this.management = createManagementClient(storeId, apiKey);
+    this.storefront = createStorefrontClient(storeId);
   }
 }

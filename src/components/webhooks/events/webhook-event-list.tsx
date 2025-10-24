@@ -1,13 +1,13 @@
 import { Action, ActionPanel, List } from "@raycast/api";
-import type { components } from "@ywwa/paylater/dist/generated/management";
 import { useStore } from "../../../providers/store-provider/store-provider";
 import { useWebhookEventsList } from "../../../queries/webhooks/list-webhook-events.query";
 import WebhookEventListItem from "./webhook-event-list-item";
 import { withProviders } from "../../../hocs/with-providers";
 import WebhookEventDetails from "./webhook-event-details";
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 
 export interface WebhookEventListProps {
-  webhook: string | components["schemas"]["WebhookSubscriptionDto"];
+  webhook: string | ManagementSchemas["WebhookSubscriptionDto"];
 }
 
 const WebhookEventList = ({ webhook }: WebhookEventListProps) => {

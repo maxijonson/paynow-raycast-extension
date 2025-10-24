@@ -1,10 +1,10 @@
 import { Action, ActionPanel, Color, Detail } from "@raycast/api";
 import { withProviders } from "../../../hocs/with-providers";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { Fragment, useMemo } from "react";
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 
 export interface WebhookEventDetailsProps {
-  event: Management.components["schemas"]["QueuedWebhookDto"];
+  event: ManagementSchemas["QueuedWebhookDto"];
 }
 
 const WebhookEventDetails = ({ event }: WebhookEventDetailsProps) => {

@@ -1,5 +1,5 @@
+import type { ManagementSchemas } from "@paynow-gg/typescript-sdk";
 import { List } from "@raycast/api";
-import type { Management } from "@ywwa/paylater/dist/generated";
 import { useMemo } from "react";
 
 const TagListItem = ({
@@ -7,7 +7,7 @@ const TagListItem = ({
   detail,
   quickLook,
   tag,
-}: { tag: Management.components["schemas"]["TagDto"] } & Pick<List.Item.Props, "actions" | "detail" | "quickLook">) => {
+}: { tag: ManagementSchemas["TagDto"] } & Pick<List.Item.Props, "actions" | "detail" | "quickLook">) => {
   const keywords = useMemo<string[]>(() => {
     const kw = [tag.id, tag.slug];
     if (tag.name) {
