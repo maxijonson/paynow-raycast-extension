@@ -3,6 +3,15 @@
 > This repository was used as initial development space before the extension was published to the Raycast Store.
 > The extension is now officially published and maintained on a Raycast extensions fork.
 
+
+> Note to self: To develop the extension without cloning the entire Raycast extensions repo, you can follow this [Reddit post](https://www.reddit.com/r/raycastapp/comments/1j6dplf/publishing_an_extension_how_to_update_the_pull/).
+> 1. `git clone --single-branch --branch <branch-name> --filter=blob:none --sparse git@github.com:maxijonson/raycast-extensions.git raycast-extensions-paynow`
+> 2. `cd raycast-extensions-paynow`
+> 3. `git sparse-checkout init --cone`
+> 4. `git sparse-checkout set extensions/paynow`
+>
+> This will clone the `raycast-extensions` fork without all the other extensions, saving a lot of space and time.
+
 # PayNow Raycast Extension
 
 Unofficial Raycast extension for [PayNow](https://www.paynow.gg) - a Merchant of Record specializing in digital goods.
