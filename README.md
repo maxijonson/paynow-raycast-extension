@@ -46,9 +46,16 @@ Unofficial Raycast extension for [PayNow](https://www.paynow.gg) - a Merchant of
 
 Got a feature request? Please open an issue or contact me on Discord: **MaxiJonson**. Please take note that I usually only work on this project occasionally (literally only on the 1h30 train ride to and from work lol), so please be patient.
 
-## Installation
+## Setup
 
-This extension is not currently on the official Raycast Store. If you would like to install it regardless, you can install it manually as a development extension.
+This extension allows you to connect multiple PayNow stores. You can manage your stores in the "Manage Stores" command. If none are configured, you'll be prompted to add one when you try to use any of the commands.
+
+> Note: the API key you use should have at least read access to the features you want to use. Currently, the extension **does not handle permission errors gracefully** and always assumes it has the right permissions when making requests.
+
+## Local Installation
+
+This extension can be downloaded on the official Raycast Store by searching for it's ID: `paynow`. 
+If you want the latest features not yet published, you can install it locally by following these steps:
 
 1. Clone the repository
    ```bash
@@ -67,13 +74,7 @@ This extension is not currently on the official Raycast Store. If you would like
    ```
 4. Open Raycast, use the "Manage Extensions" command and use the "Import Extension" action. Then, select the repo folder you cloned in step 1.
 
-## Setup
-
-This extension allows you to connect multiple PayNow stores. You can manage your stores in the "Manage Stores" command. If none are configured, you'll be prompted to add one when you try to use any of the commands.
-
-> Note: the API key you use should have at least read access to the features you want to use. Currently, the extension **does not handle permission errors gracefully** and always assumes it has the right permissions when making requests.
-
-## Updating the extension
+## Updating the local extension
 
 Because this extension is not on the official Raycast Store, you'll need to manually update it when there are new releases. You won't need to re-import it though.
 
