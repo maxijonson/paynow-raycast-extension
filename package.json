@@ -53,6 +53,10 @@
     "macOS",
     "Windows"
   ],
+  "categories": [
+    "Finance",
+    "Developer Tools"
+  ],
   "dependencies": {
     "@paynow-gg/typescript-sdk": "^1.0.20",
     "@raycast/api": "^1.103.3",
