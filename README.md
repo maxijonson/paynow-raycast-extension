@@ -1,3 +1,8 @@
+> **⚠️ Development Moved ⚠️**
+> 
+> This repository was used as initial development space before the extension was published to the Raycast Store.
+> The extension is now officially published and maintained on a Raycast extensions fork.
+
 # PayNow Raycast Extension
 
 Unofficial Raycast extension for [PayNow](https://www.paynow.gg) - a Merchant of Record specializing in digital goods.
